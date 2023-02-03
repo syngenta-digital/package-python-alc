@@ -13,15 +13,16 @@ class CommonLogger:
         self.__json.set_preferred_backend('simplejson')
         self.default_level = 3
         self.log_levels = {
+            'DEBUG': 0,
             'INFO': 1,
             'WARN': 2,
             'ERROR': 3
         }
 
-    def log(self,**kwargs):
-        if not os.getenv('RUN_MODE') == 'unittest' and os.getenv('STAGE') == 'local' and self.__should_log():
+    def log(self, **kwargs):
+        if not os.getenv('RUN_MODE') == 'unittest' and os.getenv('STAGE') == 'local' and self.__should_log(**kwargs):
             self.__log_local(**kwargs)
-        elif not os.getenv('RUN_MODE') == 'unittest' and self.__should_log():
+        elif not os.getenv('RUN_MODE') == 'unittest' and self.__should_log(**kwargs):
             self.__log(**kwargs)
 
     def __log_local(self, **kwargs):
