@@ -6,6 +6,7 @@ from syngenta_digital_alc.apigateway.error_handling.timeout import (
     timeout_after,
     APIGATEWAY_MAXIMUM_RUNTIME_SECONDS,
 )
+from syngenta_digital_alc.common import logger
 
 
 def handler_requirements(timeout_seconds=APIGATEWAY_MAXIMUM_RUNTIME_SECONDS, **kwargs):
@@ -22,10 +23,15 @@ def handler_requirements(timeout_seconds=APIGATEWAY_MAXIMUM_RUNTIME_SECONDS, **k
                 try:
                     timeout_wrapped(request, response)
                 except ApiTimeout:
-                    response.code = 400  # integration timeout
+                    response.code = 400
                     response.set_error(
                         key_path="Integration Timeout",
                         message="This API call timed out. Please try more, smaller queries, or reach out to our help-connect channel!",
+                    )
+
+                    logger.log(
+                        level='ERROR',
+                        log=f"{request.path_parameters} has timed out! Sending human readable message to user."
                     )
 
             return response.response
