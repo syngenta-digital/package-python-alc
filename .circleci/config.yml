@@ -76,8 +76,8 @@ workflows:
         jobs:
             - install-build-deploy:
                 context:
-                    - pypi-token
-                    - sonarcloud-token
+                    - shared-pypi-token
+                    - shared-sonarcloud-token
                 filters:
                     tags:
                         only: /.*/
