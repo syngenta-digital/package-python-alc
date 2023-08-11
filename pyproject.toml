@@ -1,0 +1,43 @@
+[tool.ruff]
+line-length = 120
+
+# Enable Pyflake, pycodestyle and isort rules.
+select = ["E", "F", "I"]
+fix = true
+
+# Never enforce `E501` (line length violations)
+# Never enforce `E402` (import at top of file)
+ignore = ["E501", "E402"]
+
+# Exclude a variety of commonly ignored directories.
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".hg",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "venv",
+]
+
+[tool.black]
+line_length = 120
+include = 'application\/.*\.py?$|tests\/.*\.py?$'
+
+[tool.mypy]
+ignore_missing_imports = true
+no_implicit_optional = false
+allow_untyped_defs = true
+disable_error_code = ["var-annotated"]

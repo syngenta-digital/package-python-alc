@@ -9,4 +9,4 @@ def run_pass(request, response):  # pylint: disable=unused-argument
 
 @handler_requirements()
 def run_fail(request, response):  # pylint: disable=unused-argument
-    raise BeforeAllException(code=401, key_path='headers:x-api-key', message='you need an api key')
+    raise BeforeAllException(code=401, key_path="headers:x-api-key", message="you need an api key")

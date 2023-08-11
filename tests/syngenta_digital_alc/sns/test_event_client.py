@@ -6,7 +6,6 @@ from tests.syngenta_digital_alc.sns import mock_data
 
 
 class SNSEventClientTest(unittest.TestCase):
-
     def test_sns_record_doesnt_parse(self):
         framework = EventClient(mock_data.get_sns_event(), None)
         sns_record = framework.records[0]
@@ -14,7 +13,7 @@ class SNSEventClientTest(unittest.TestCase):
             sns_record._record,
             {
                 "EventVersion": "1.0",
-                "EventSubscriptionArn": 'eventsubscriptionarn',
+                "EventSubscriptionArn": "eventsubscriptionarn",
                 "EventSource": "aws:sns",
                 "Sns": {
                     "SignatureVersion": "1",
@@ -24,21 +23,15 @@ class SNSEventClientTest(unittest.TestCase):
                     "MessageId": "95df01b4-ee98-5cb9-9903-4c221d41eb5e",
                     "Message": "Hello from SNS!",
                     "MessageAttributes": {
-                        "Test": {
-                            "Type": "String",
-                            "Value": "TestString"
-                        },
-                        "TestBinary": {
-                            "Type": "Binary",
-                            "Value": "TestBinary"
-                        }
+                        "Test": {"Type": "String", "Value": "TestString"},
+                        "TestBinary": {"Type": "Binary", "Value": "TestBinary"},
                     },
                     "Type": "Notification",
                     "UnsubscribeUrl": "EXAMPLE",
-                    "TopicArn": 'topicarn',
-                    "Subject": "TestInvoke"
-                }
-            }
+                    "TopicArn": "topicarn",
+                    "Subject": "TestInvoke",
+                },
+            },
         )
 
     def test_sns_record_parses(self):

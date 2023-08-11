@@ -3,7 +3,7 @@ def get_sns_event():
         "Records": [
             {
                 "EventVersion": "1.0",
-                "EventSubscriptionArn": 'eventsubscriptionarn',
+                "EventSubscriptionArn": "eventsubscriptionarn",
                 "EventSource": "aws:sns",
                 "Sns": {
                     "SignatureVersion": "1",
@@ -13,20 +13,14 @@ def get_sns_event():
                     "MessageId": "95df01b4-ee98-5cb9-9903-4c221d41eb5e",
                     "Message": "Hello from SNS!",
                     "MessageAttributes": {
-                        "Test": {
-                            "Type": "String",
-                            "Value": "TestString"
-                        },
-                        "TestBinary": {
-                            "Type": "Binary",
-                            "Value": "TestBinary"
-                        }
+                        "Test": {"Type": "String", "Value": "TestString"},
+                        "TestBinary": {"Type": "Binary", "Value": "TestBinary"},
                     },
                     "Type": "Notification",
                     "UnsubscribeUrl": "EXAMPLE",
-                    "TopicArn": 'topicarn',
-                    "Subject": "TestInvoke"
-                }
+                    "TopicArn": "topicarn",
+                    "Subject": "TestInvoke",
+                },
             }
         ]
     }
