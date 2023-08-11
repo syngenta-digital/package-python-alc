@@ -6,7 +6,5 @@ def handler_requirements():
         def wrapper(event, context):
             client = EventClient(event, context)
             return func(client)
-
         return wrapper
-
     return decorator_func

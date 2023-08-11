@@ -1,11 +1,9 @@
 import signal
-
 from syngenta_digital_alc.apigateway.custom_exceptions import ApiTimeout
 
+
 # maximum API gateway timeout at time of writing, remember this is configurable per endpoint
-APIGATEWAY_MAXIMUM_RUNTIME_SECONDS = (
-    30 - 2
-)  # substract 2 to give us 2 seconds to cleanup
+APIGATEWAY_MAXIMUM_RUNTIME_SECONDS = 30 - 2  # substract 2 to give us 2 seconds to cleanup
 
 
 def timeout_after(seconds=APIGATEWAY_MAXIMUM_RUNTIME_SECONDS):
@@ -15,9 +13,9 @@ def timeout_after(seconds=APIGATEWAY_MAXIMUM_RUNTIME_SECONDS):
     Args:
         seconds: int
     """
-
     def inner(func):
         def wrapper(*args, **kwargs):
+
             def buzzer(signum, frame):
                 raise ApiTimeout()
 
@@ -31,5 +29,4 @@ def timeout_after(seconds=APIGATEWAY_MAXIMUM_RUNTIME_SECONDS):
             return result
 
         return wrapper
-
     return inner

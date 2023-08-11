@@ -1,6 +1,5 @@
-import time
 import unittest
-
+import time
 from syngenta_digital_alc.apigateway.handler_requirements import handler_requirements
 from tests.syngenta_digital_alc.apigateway.mock_data import apigateway_event
 

@@ -24,9 +24,6 @@ pytest = "*"
 pytest-html = "*"
 pytest-cov = "*"
 pylint-quotes = "*"
-black = "*"
-ruff = "*"
-pre-commit = "*"
 
 [scripts]
 test = "python -m unittest discover"
