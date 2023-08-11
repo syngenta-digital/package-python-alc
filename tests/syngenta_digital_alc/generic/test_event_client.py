@@ -1,12 +1,11 @@
-import unittest
 import json
+import unittest
 
 from syngenta_digital_alc.generic.event_client import EventClient
 from tests.syngenta_digital_alc.generic import mock_data
 
 
 class ConsoleEventClientTest(unittest.TestCase):
-
     def setUp(self):
         self.raw_console_event = mock_data.get_event()
         self.event = EventClient(self.raw_console_event, None)

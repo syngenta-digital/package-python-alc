@@ -1,6 +1,5 @@
 import json
 
+
 def get_event():
-    return json.dumps({
-        'test': True
-    })
+    return json.dumps({"test": True})

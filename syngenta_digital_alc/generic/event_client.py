@@ -1,7 +1,7 @@
 from syngenta_digital_alc.common import json_helper
 
-class EventClient:
 
+class EventClient:
     def __init__(self, event, context):
         self._event = event
         self.context = context
