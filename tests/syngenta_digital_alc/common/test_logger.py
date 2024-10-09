@@ -43,3 +43,10 @@ class LoggerTest(TestCase):
     @mock.patch.dict(os.environ, {'RUN_MODE': 'SEE-LOGS', 'STAGE': 'local', 'LOG_LEVEL': '1'})
     def test_logger_logs_see_info_numeric(self):
         logger.log(level='INFO', log={'INFO': 'see-numeric'}, trace=True)
+
+    @mock.patch.dict(os.environ, {'RUN_MODE': 'SEE-LOGS', 'STAGE': 'local', 'LOG_LEVEL': 'DEBUG'})
+    def test_logger_logs_see_debug(self):
+        jsonpickle_path = 'syngenta_digital_alc.common.logger.jsonpickle'
+        with mock.patch(jsonpickle_path) as jsonpickle_mock:
+            logger.log(level='DEBUG', log={'DEBUG': 'see'})
+            jsonpickle_mock.encode.assert_called_once()
